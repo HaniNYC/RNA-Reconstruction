@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="RNA Reconstruction :  Reconstructing all possible RNA strands based on its fragments using Graph Theory ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>RNA Reconstruction</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/HaniNYC/RNA-Reconstruction">View on GitHub</a>
+
+          <h1 id="project_title">RNA Reconstruction</h1>
+          <h2 id="project_tagline"> Reconstructing all possible RNA strands based on its fragments using Graph Theory </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/HaniNYC/RNA-Reconstruction/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/HaniNYC/RNA-Reconstruction/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>#  RNA Reconstructing From Fragments</p>
+
+<p><em>For a quick review of the process of reconstructing RNA strands from its fragments using graph theory, please visit</em> <a href="https://drive.google.com/file/d/0B-Nh3GHwL_5sX05ZcXhTU1BXWHc/edit?usp=sharing">RNA Reconstruction Using Graph Theory</a></p>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction:</h2>
+
+<p>There are two programs included within:
+  1- the main program :<code>RNA_RECONST_GRAPH.cpp</code>. That is the main program, that will reassemble the RNA     strand(s) from its G, UC splicing enzymes fragments.
+  2- <code>xtra_Dev_Debug_Version.cpp</code>That version is for development and debugging, it shows every step results, so we are able to reassure the logic that has been used .</p>
+
+<h2>
+<a name="compiling-both-programs-are-writing-in-c-language-to-compile-any-of-them-on-eniac-simply-use-the-traditional-method" class="anchor" href="#compiling-both-programs-are-writing-in-c-language-to-compile-any-of-them-on-eniac-simply-use-the-traditional-method"><span class="octicon octicon-link"></span></a>Compiling: Both programs are writing in C++ language, to compile any of them on <em>eniac</em>, simply use the traditional method</h2>
+
+<pre><code>     ` g++ RNA_RECONST_GRAPH.cpp -o run`
+     `./run`           
+</code></pre>
+
+<p>Note: If you are using Windows machine, please go to line 345 and <em>uncomment</em> the system("pause")       </p>
+
+<p>Program's Goal: the goal of the program is to reconstruct RNA strand - or all possible strands - from  giving fragments that results from using splicing enzymes G and UC on two identical RNA strands. </p>
+
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description:</h2>
+
+<p>The RNA strands is consists of four bases U,A,C,G. In Biology, there are some splicing enzymes that can be used to splice RNA strands at specific regions.
+ For example G-enzyme, if used on RNA strand, it will splice the RNA strand right after each G base is found. Similarly, UC-enzyme will splice the RNA enzyme right after any U or C base  is found. Because we can have two identical copies of RNA strands, we can use G-enzyme on one of them, and UC-enzyme on the 
+Second strand, the result will be fragments that  ends on G bases, U bases or C bases or A bases. But because we know which fragments resulted from which enzyme treatment, we can determine the last base on the RNA easily.
+ The fragments resulting from treating the first RNA strand by G-enzyme will be:
+ 1- either ending on G base
+ 2- or ending on non-G base , that will be the last fragment.
+The fragments resulting from treating the first RNA strand by UC-enzyme will be:
+ 1- either ending on U or C base 
+ 2- or ending on non U or C base, that will be the last fragment.</p>
+
+<h2>
+<a name="the-logic" class="anchor" href="#the-logic"><span class="octicon octicon-link"></span></a>The Logic:</h2>
+
+<p>Because the RNA strands consists of four bases, G,C,A,U, it must be ending with one- and only one - of those.
+ 1- If it ends with G , then the abnormal fragment will show up on the UC-enzyme treatment as a fragment that 
+ 2- If it ends with C or U ,then the abnormal fragment will show up on the G-enzyme treatment as a fragment that ends with C or U.
+ 3- If it ends with A ,then the abnormal fragment will show up on both G-enzyme treatment and UC_enzyme treatment.<br>
+_ Therefore_, after the first enzyme treatment, we can easily conclude the last fragment .
+To determine the first fragment: if we imaging treating fragments that resulted from treating RNA with G_enzyme with UC_splicing enzyme and fragments that resulted from  treating the copy of RNA with UC_splicing enzyme with the G_enzyme; then group the inner bases into one vector and the extended- outer bases- into another, by taking the intersects of these two vectors out, we end up with only two base( the ends ), because we know the last fragment then we can conclude the first fragment. Then the problem becomes finding Eulerian paths( circuits) that starts on the first fragment, and ends at the last fragment, and it must pass by all vertices ( the external bases)through the edges ( inner bases).  Then Eulerian paths resemble the possible RNA structures.   </p>
+
+<p>Known Bugs:
+ None, <em>please let me know if you find any at</em><br>
+           Hani Aboudeshisha               hani.csci@gmail,com</p>
+
+<pre><code>      Enjoy!!
+</code></pre>
+
+<p><em>please visit _<a href="https://drive.google.com/file/d/0B-Nh3GHwL_5sX05ZcXhTU1BXWHc/edit?usp=sharing">The Power Points</a>    for _more information</em>    </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">RNA Reconstruction maintained by <a href="https://github.com/HaniNYC">HaniNYC</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
